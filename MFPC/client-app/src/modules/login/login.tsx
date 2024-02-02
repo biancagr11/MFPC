@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 const Login = observer(() => {
   const loginStore = useContext(LoginContext);
   const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
+  const [loginFailed, setLoginFailed] = useState(false);
+
   const navigate = useNavigate();
 
   const loginSubmit = (values: LoginRequest) => {
@@ -18,7 +20,12 @@ const Login = observer(() => {
     
     loginStore.login(values)
       .then(() => {
-        navigate('/home');
+        if(loginStore.authenticated == 1){
+          navigate('/');
+        }
+        if(loginStore.authenticated == 0){
+          setLoginFailed(true);
+        }
       })
       .catch((error) => {
         setIsLoginButtonDisabled(false);
@@ -72,6 +79,8 @@ const Login = observer(() => {
               }
             />
           </Form.Item>
+
+          {loginFailed ? <p>Wrong credentials. Try again.</p>: ""}
 
           <Button 
           disabled={isLoginButtonDisabled} 

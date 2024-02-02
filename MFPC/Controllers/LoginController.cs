@@ -15,7 +15,7 @@ namespace MFPC.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("login")]
+        [HttpPost]
         public async Task<ActionResult> Login([FromBody] LoginRequest loginRequest)
         {
             var result = await _mediator.Send(loginRequest);

@@ -16,6 +16,7 @@ namespace MFPC.Data
         }
 
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Memory> Memories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

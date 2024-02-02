@@ -1,26 +1,20 @@
-import React from 'react';
-import { BottomNavigation, BottomNavigationAction, Container } from '@mui/material';
-import NotesIcon from '@mui/icons-material/Notes';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import React from "react";
+import { Container } from "@mui/material";
+import NavBar from "../navbar.tsx";
 
 const HomePage = () => {
-    const [value, setValue] = React.useState(0);
-
   return (
-      <Container>
-        <BottomNavigation
-        showLabels
-        value={value}
-        onChange={(event, newValue) => {
-            setValue(newValue);
-        }}
-        >
-            <BottomNavigationAction label="Journal" icon={<NotesIcon />} />
-            <BottomNavigationAction label="New" icon={<AddCircleOutlineIcon />} />
-            <BottomNavigationAction label="Favourites" icon={<StarBorderIcon />} />
-        </BottomNavigation>      
-        </Container>
+    <Container>
+      <NavBar />
+      <div style={{width:"100%", display:"flex", alignItems: "center", justifyContent:"center", marginTop: "240px"}}>
+        <img
+          src={require("../../images/welcome.jpg")}
+          alt={"Welcome"}
+          loading="lazy"
+          width={"50%"}
+        />
+      </div>
+    </Container>
   );
 };
 
